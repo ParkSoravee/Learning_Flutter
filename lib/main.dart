@@ -9,41 +9,55 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "ListView Part 2",
+      title: "ListView Horizontal",
       home: Scaffold(
         appBar: AppBar(
-          title: Text("ListView part 2"),
+          title: Text("ListView Horizontal"),
         ),
         body: ListView(
+          scrollDirection: Axis.horizontal,
           children: [
-            ListTile(
-              leading: Icon(Icons.directions_railway),
-              title: Text("08.00"),
-              subtitle: Text("Lorem ipsum dolor sit amet, ."),
-              trailing: Icon(Icons.notifications_none),
-              enabled: false,
+            Container(
+              alignment: Alignment.center,
+              width: 150,
+              color: Colors.red,
+              child: Text(
+                "A",
+                style: TextStyle(fontSize: 100, color: Colors.white),
+              ),
             ),
-            ListTile(
-              leading: Icon(Icons.directions_car),
-              title: Text("09.00"),
-              subtitle: Text("Lorem ipsum dolor sit amet, ."),
-              trailing: Icon(Icons.notifications_none),
-              selected: true,
-            ),
-            ListTile(
-              leading: Icon(Icons.directions_boat),
-              title: Text("09.30"),
-              subtitle: Text("Lorem ipsum dolor sit amet, ."),
-              trailing: Icon(Icons.notifications_none),
-              onTap: () {
-                print("Click");
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.directions_railway),
-              title: Text("10.50"),
-              subtitle: Text("Lorem ipsum dolor sit amet, ."),
-              trailing: Icon(Icons.notifications_none),
+            Container(
+              alignment: Alignment.center,
+              width: 150,
+              color: Colors.green,
+              child: Text(
+                "B",
+                style: TextStyle(fontSize: 100, color: Colors.white),
+              ),
+            ),Container(
+              alignment: Alignment.center,
+              width: 150,
+              color: Colors.blue,
+              child: Text(
+                "C",
+                style: TextStyle(fontSize: 100, color: Colors.white),
+              ),
+            ),Container(
+              alignment: Alignment.center,
+              width: 150,
+              color: Colors.yellow,
+              child: Text(
+                "D",
+                style: TextStyle(fontSize: 100, color: Colors.white),
+              ),
+            ),Container(
+              alignment: Alignment.center,
+              width: 150,
+              color: Colors.orange,
+              child: Text(
+                "E",
+                style: TextStyle(fontSize: 100, color: Colors.white),
+              ),
             )
           ],
         ),
