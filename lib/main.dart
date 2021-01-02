@@ -8,33 +8,28 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var isShow = false;
     return MaterialApp(
-      title: "Expanded",
+      title: "SizedBox",
       home: Scaffold(
-        appBar: AppBar(
-          title: Text("Expanded"),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Row(children: [
-            Expanded(
-              flex: 2,
-              child: Container(
-                child: Text(
-                  "Food",
-                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
-                ),
+          appBar: AppBar(
+            title: Text("SizedBox"),
+          ),
+          body: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Title",
+                style: TextStyle(fontSize: 16),
               ),
-            ),
-            Container(
-              child: RaisedButton(
-                onPressed: () {},
-                child: Text("View more"),
+              //SizedBox(height: 50,),
+              Container(
+                padding: EdgeInsets.only(top: 10, bottom: 10),
+                child: isShow ? Text("Subtitle") : SizedBox(height: 20),
               ),
-            ),
-          ]),
-        ),
-      ),
+              Text("02/01/2021")
+            ],
+          )),
     );
   }
 }
