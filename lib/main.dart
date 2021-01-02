@@ -8,28 +8,50 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var isShow = false;
     return MaterialApp(
-      title: "SizedBox",
+      title: "IntrinsicWidth and IntrinsicHeight",
       home: Scaffold(
-          appBar: AppBar(
-            title: Text("SizedBox"),
+        appBar: AppBar(
+          title: Text("IntrinsicWidth & IntrinsicHeight"),
+        ),
+        body: Center(
+          child: IntrinsicWidth(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch, //Stretch
+              children: [
+                _buildButton(text: "AAAAA"),
+                _buildButton(text: "BBBBBBBBBBB"),
+                _buildButton(text: "CCCCCCCCCCCCCCCCC"),
+                IntrinsicHeight(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      _buildContainer(text: "AAAAA"),
+                      _buildContainer(text: "BBBBBBBBBBB"),
+                      _buildContainer(text: "CCCCCCCCCCCCCCCCC")
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
-          body: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Title",
-                style: TextStyle(fontSize: 16),
-              ),
-              //SizedBox(height: 50,),
-              Container(
-                padding: EdgeInsets.only(top: 10, bottom: 10),
-                child: isShow ? Text("Subtitle") : SizedBox(height: 20),
-              ),
-              Text("02/01/2021")
-            ],
-          )),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildButton({String text}) {
+    return RaisedButton(
+      onPressed: () {},
+      child: Text(text),
+    );
+  }
+
+  Widget _buildContainer({String text}) {
+    return Container(
+      color: Colors.blue,
+      width: 30,
+      child: Text(text),
     );
   }
 }
