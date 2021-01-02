@@ -6,33 +6,35 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  final List<String> items =
-      List<String>.generate(20, (index) => "Item: ${++index}");
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "ListView More Data",
+      title: "Grid view",
       home: Scaffold(
         appBar: AppBar(
-          title: Text("ListView more data"),
+          title: Text("Grid view"),
         ),
-        body: ListView.builder(
-            itemCount: items.length,
-            itemBuilder: (context, index) {
-              return Column(
-                children: [
-                  ListTile(
-                    leading: Icon(Icons.directions_bus),
-                    title: Text("${items[index]}"),
-                    subtitle: Text("Soravee Rattanaapha"),
-                    trailing: Icon(Icons.notifications_none),
-                  ),
-                  Divider(height: 2, color: Colors.grey.shade300,) //line
-                ],
-              );
-            }),
+        body: GridView.extent(
+          padding: EdgeInsets.all(8),
+          // crossAxisSpacing: 8,
+          // mainAxisSpacing: 8,
+          //crossAxisCount: 3, //count
+          maxCrossAxisExtent: 250,
+          // childAspectRatio: 1.5,
+          children: _buildGridList(20), //create function Array
+        ),
       ),
     );
+  }
+
+  List<Card> _buildGridList(int count) {
+    return List.generate(
+        count,
+        (index) => Card(
+              child: Image.network(
+                'https://d25tv1xepz39hi.cloudfront.net/2017-08-21/files/landscape-photography_1645.jpg',
+                fit: BoxFit.cover,
+              ),
+            ));
   }
 }
