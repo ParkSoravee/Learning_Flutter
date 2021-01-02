@@ -6,61 +6,32 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  final List<String> items =
+      List<String>.generate(20, (index) => "Item: ${++index}");
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "ListView Horizontal",
+      title: "ListView More Data",
       home: Scaffold(
         appBar: AppBar(
-          title: Text("ListView Horizontal"),
+          title: Text("ListView more data"),
         ),
-        body: ListView(
-          scrollDirection: Axis.horizontal,
-          children: [
-            Container(
-              alignment: Alignment.center,
-              width: 150,
-              color: Colors.red,
-              child: Text(
-                "A",
-                style: TextStyle(fontSize: 100, color: Colors.white),
-              ),
-            ),
-            Container(
-              alignment: Alignment.center,
-              width: 150,
-              color: Colors.green,
-              child: Text(
-                "B",
-                style: TextStyle(fontSize: 100, color: Colors.white),
-              ),
-            ),Container(
-              alignment: Alignment.center,
-              width: 150,
-              color: Colors.blue,
-              child: Text(
-                "C",
-                style: TextStyle(fontSize: 100, color: Colors.white),
-              ),
-            ),Container(
-              alignment: Alignment.center,
-              width: 150,
-              color: Colors.yellow,
-              child: Text(
-                "D",
-                style: TextStyle(fontSize: 100, color: Colors.white),
-              ),
-            ),Container(
-              alignment: Alignment.center,
-              width: 150,
-              color: Colors.orange,
-              child: Text(
-                "E",
-                style: TextStyle(fontSize: 100, color: Colors.white),
-              ),
-            )
-          ],
-        ),
+        body: ListView.builder(
+            itemCount: items.length,
+            itemBuilder: (context, index) {
+              return Column(
+                children: [
+                  ListTile(
+                    leading: Icon(Icons.directions_bus),
+                    title: Text("${items[index]}"),
+                    subtitle: Text("Soravee Rattanaapha"),
+                    trailing: Icon(Icons.notifications_none),
+                  ),
+                  Divider(height: 2, color: Colors.grey.shade300,) //line
+                ],
+              );
+            }),
       ),
     );
   }
