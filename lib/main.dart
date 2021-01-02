@@ -9,32 +9,41 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Grid view",
+      title: "Stack Layout",
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Grid view"),
+          title: Text("Stack Layout"),
         ),
-        body: GridView.extent(
-          padding: EdgeInsets.all(8),
-          // crossAxisSpacing: 8,
-          // mainAxisSpacing: 8,
-          //crossAxisCount: 3, //count
-          maxCrossAxisExtent: 250,
-          // childAspectRatio: 1.5,
-          children: _buildGridList(20), //create function Array
+        body: Stack(
+          alignment: Alignment(0.6, 0.6),
+          children: [
+            CircleAvatar(
+              backgroundImage: NetworkImage(
+                  'https://d25tv1xepz39hi.cloudfront.net/2017-08-21/files/landscape-photography_1645.jpg',),
+              radius: 110,
+            ),
+            // Image.network(
+            //   'https://d25tv1xepz39hi.cloudfront.net/2017-08-21/files/landscape-photography_1645.jpg',
+            //   fit: BoxFit.cover,
+            // ),
+            Container(
+              padding: EdgeInsets.fromLTRB(12, 4, 12, 4),
+              decoration: BoxDecoration(
+                color: Colors.black45,
+                borderRadius: BorderRadius.circular(4),
+              ),
+              child: Text(
+                "Beautiful view",
+                style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            )
+          ],
         ),
       ),
     );
-  }
-
-  List<Card> _buildGridList(int count) {
-    return List.generate(
-        count,
-        (index) => Card(
-              child: Image.network(
-                'https://d25tv1xepz39hi.cloudfront.net/2017-08-21/files/landscape-photography_1645.jpg',
-                fit: BoxFit.cover,
-              ),
-            ));
   }
 }
